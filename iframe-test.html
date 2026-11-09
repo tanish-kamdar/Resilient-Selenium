@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Iframe Layout with Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        p.description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .iframe-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        iframe {
+            width: 320px;
+            height: 380px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dashboard Layout with Sibling Iframes</h2>
+    <p class="description">The second iframe below contains the requested form with your input fields, gender radio group, and Indian states dropdown.</p>
+
+    <div class="iframe-container">
+        <!-- Sibling Iframe 1: Widget / Info -->
+        <iframe srcdoc="
+            <html>
+            <head><style>body{font-family:Arial;padding:15px;color:#445;}</style></head>
+            <body>
+                <h3>System Info</h3>
+                <p>Status: <strong>Online</strong></p>
+                <p>Active Users: 1,245</p>
+                <p>Server Load: 14%</p>
+            </body>
+            </html>
+        "></iframe>
+
+        <!-- Sibling Iframe 2: Target Iframe containing the Form -->
+        <iframe srcdoc="
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body { font-family: Arial, sans-serif; padding: 15px; margin: 0; font-size: 14px; background: #fff; color: #333; }
+                    h3 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+                    .form-group { margin-bottom: 14px; }
+                    label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+                    input[type='text'], select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+                    .radio-group { display: flex; gap: 15px; margin-top: 6px; }
+                    .radio-group label { font-weight: normal; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+                </style>
+            </head>
+            <body>
+                <h3>User Registration</h3>
+                <form>
+                    <div class='form-group'>
+                        <label for='firstName'>First Name:</label>
+                        <input type='text' id='firstName' name='firstName' placeholder='Enter your first name'>
+                    </div>
+                    <div class='form-group'>
+                        <label>Gender:</label>
+                        <div class='radio-group'>
+                            <label><input type='radio' name='gender' value='male'> Male</label>
+                            <label><input type='radio' name='gender' value='female'> Female</label>
+                            <label><input type='radio' name='gender' value='other'> Other</label>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label for='state'>Indian State:</label>
+                        <select id='state' name='state'>
+                            <option value=''>-- Select State --</option>
+                            <option value='Andhra Pradesh'>Andhra Pradesh</option>
+                            <option value='Arunachal Pradesh'>Arunachal Pradesh</option>
+                            <option value='Assam'>Assam</option>
+                            <option value='Bihar'>Bihar</option>
+                            <option value='Delhi'>Delhi</option>
+                            <option value='Goa'>Goa</option>
+                            <option value='Gujarat'>Gujarat</option>
+                            <option value='Haryana'>Haryana</option>
+                            <option value='Karnataka'>Karnataka</option>
+                            <option value='Kerala'>Kerala</option>
+                            <option value='Madhya Pradesh'>Madhya Pradesh</option>
+                            <option value='Maharashtra'>Maharashtra</option>
+                            <option value='Punjab'>Punjab</option>
+                            <option value='Rajasthan'>Rajasthan</option>
+                            <option value='Tamil Nadu'>Tamil Nadu</option>
+                            <option value='Uttar Pradesh'>Uttar Pradesh</option>
+                            <option value='West Bengal'>West Bengal</option>
+                        </select>
+                    </div>
+                </form>
+            </body>
+            </html>
+        "></iframe>
+
+        <!-- Sibling Iframe 3: Quick Links -->
+        <iframe srcdoc="
+            <html>
+            <head><style>body{font-family:Arial;padding:15px;color:#445;}ul{padding-left:20px;}</style></head>
+            <body>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href='#'>Documentation</a></li>
+                    <li><a href='#'>Support Portal</a></li>
+                    <li><a href='#'>Privacy Policy</a></li>
+                </ul>
+            </body>
+            </html>
+        "></iframe>
+    </div>
+
+</body>
+</html>
